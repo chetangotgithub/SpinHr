@@ -1,0 +1,53 @@
+/* styles.css */
+.body{
+    margin:0;
+    padding: 0;
+}
+
+.input-field {
+    /* Full width to match the form container */
+    padding: 5px;
+    /* Padding for better spacing */
+    border: 2px solid #ccc;
+    /* Light border */
+    border-radius: 5px;
+    /* Rounded corners */
+    outline: none;
+    /* Remove default outline */
+    transition: border-color 0.3s;
+
+    display: flex;
+    /* Smooth transition on focus */
+}
+
+.input-field:focus {
+    border-color: #000000;
+    /* Change border color on focus */
+}
+
+/* Button styles */
+.submit-button {
+    padding: 10px 15px;
+    /* Padding for the button */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    background-color: #66afe9;
+    /* Initial background color */
+    color: rgb(0, 0, 0);
+    /* Text color */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for background and text color */
+}
+
+.submit-button:hover {
+    background-color: #022c46;
+    /* Darker shade for hover */
+    color: #f0f0f0;
+    /* Change text color on hover */
+}

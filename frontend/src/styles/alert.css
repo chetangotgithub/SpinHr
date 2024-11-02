@@ -1,0 +1,45 @@
+/* Alert.css */
+
+.alert {
+    position: fixed;
+    top: 20px;
+    /* Distance from the top */
+    right: 20px;
+    /* Distance from the right */
+    background-color: #f8d7da;
+    /* Light red background */
+    color: #721c24;
+    /* Dark red text color */
+    padding: 15px 20px;
+    /* Padding inside the alert */
+    border: 1px solid #f5c6cb;
+    /* Light red border */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    z-index: 1000;
+    /* Ensure it's on top of other elements */
+    transition: opacity 0.3s ease-in-out;
+    /* Fade in/out transition */
+}
+
+.close-btn {
+    background: none;
+    /* No background */
+    border: none;
+    /* No border */
+    color: #721c24;
+    /* Dark red text color */
+    font-size: 20px;
+    /* Font size for the close button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    margin-left: 10px;
+    /* Space between message and button */
+}
+
+.close-btn:hover {
+    color: #f44336;
+    /* Change color on hover */
+}
