@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 const userSchema = new Schema({
   username: {
@@ -14,6 +14,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: 'Pending',
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -21,6 +26,6 @@ const userSchema = new Schema({
   updatedAt: Date,
 });
 
-const model = mongoose.model("testuser", userSchema);
+const model = mongoose.model('testuser', userSchema);
 
 export default model;
