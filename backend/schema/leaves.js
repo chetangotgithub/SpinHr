@@ -5,6 +5,10 @@ const leaveSchema = new Schema({
     type: String,
     required: true,
   },
+  reason: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     default: 'Pending',
@@ -30,4 +34,4 @@ const leaveSchema = new Schema({
 
 const leaveModel = mongoose.model('leaves', leaveSchema);
 
-model.exports = leaveModel;
+export default leaveModel;

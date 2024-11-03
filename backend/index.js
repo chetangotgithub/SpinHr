@@ -7,6 +7,11 @@ import getAllUsers from './src/getAllUsers.js';
 import addUser from './src/addUser.js';
 import getUserById from './src/getUserById.js';
 import loginValidation from './src/loginValidation.js';
+import addLeaves from './src/addLeaves.js';
+import approveLeave from './src/approveLeaves.js';
+import getleaves from './src/getleaves.js';
+import getLeavesbyId from './src/getLeavesbyId.js';
+import approveUser from './src/approveUser.js';
 
 const app = express();
 const router = express.Router();
@@ -24,6 +29,13 @@ app.get('/users', (req, res) => getAllUsers(req, res));
 app.post('/', jsonParser, (req, res) => addUser(req, res));
 app.get('/users/:id', (req, res) => getUserById(req, res));
 app.post('/login', jsonParser, (req, res) => loginValidation(req, res));
+
+app.post('/approve/:id', jsonParser, (req, res) => approveUser(req, res));
+
+app.get('/leaves/:id', jsonParser, (req, res) => getLeavesbyId(req, res));
+app.post('/leaves/:id', jsonParser, (req, res) => addLeaves(req, res));
+app.put('/leaves/:id', jsonParser, (req, res) => approveLeave(req, res));
+app.get('/leaves', (req, res) => getleaves(req, res));
 
 mongoose
   .connect(MONGODB_URI)

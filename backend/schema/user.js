@@ -17,13 +17,15 @@ const userSchema = new Schema({
   status: {
     type: String,
     default: 'Pending',
-    required: true,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  updatedAt: Date,
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const model = mongoose.model('testuser', userSchema);
