@@ -1,7 +1,10 @@
 import React from 'react';
 import SpinHRLogo from '../assets/spinhrlogin.png';
+import { useDispatch } from 'react-redux';
+import { holidays, home, leaves, salary } from '../Redux/NavbarReducer';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <div className="navbar">
       <img
@@ -14,11 +17,14 @@ const Navbar = () => {
           borderRadius: '50%', // Circular border radius
           overflow: 'hidden', // Ensures circular appearance if image is not square
         }}
+        onClick={() => {
+          dispatch(home());
+        }}
       />
       <div className="button-container">
-        <button>leaves</button>
-        <button>holidays</button>
-        <button>Salary</button>
+        <button onClick={() => dispatch(leaves())}>leaves</button>
+        <button onClick={() => dispatch(holidays())}>holidays</button>
+        <button onClick={() => dispatch(salary())}>Salary</button>
       </div>
     </div>
   );
