@@ -5,7 +5,7 @@ const approveUser = async (req, res) => {
   const user = await model.findByIdAndUpdate(
     id,
     { status: 'Approved', updatedAt: Date.now() },
-    { new: true } // Return the updated document
+    { new: true }
   );
   res.status(200).json({ status: 'success', response: user });
 };

@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   value: {
@@ -6,8 +7,27 @@ const initialState = {
     leaves: false,
     holidays: false,
     salary: false,
+    validateUser: null,
   },
 };
+
+// Thunk action for async validateUser
+export const validateUserAsync = createAsyncThunk(
+  'navbar/validateUser',
+  async (payload, { rejectWithValue }) => {
+    try {
+      console.log('payload ', payload);
+      const response = await axios.post(
+        'http://localhost:3000/leaves/add',
+        payload
+      );
+      return response.data.response._id; // Pass only _id to the reducer
+    } catch (error) {
+      console.error('Error validating user:', error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const counterSlice = createSlice({
   name: 'navbar',
@@ -15,6 +35,7 @@ export const counterSlice = createSlice({
   reducers: {
     leaves: (state) => {
       state.value = {
+        ...state.value,
         home: false,
         leaves: true,
         holidays: false,
@@ -23,6 +44,7 @@ export const counterSlice = createSlice({
     },
     holidays: (state) => {
       state.value = {
+        ...state.value,
         home: false,
         leaves: false,
         holidays: true,
@@ -31,6 +53,7 @@ export const counterSlice = createSlice({
     },
     salary: (state) => {
       state.value = {
+        ...state.value,
         home: false,
         leaves: false,
         holidays: false,
@@ -39,16 +62,33 @@ export const counterSlice = createSlice({
     },
     home: (state) => {
       state.value = {
+        ...state.value,
         home: true,
         leaves: false,
         holidays: false,
         salary: false,
       };
     },
+    logout: (state) => {
+      state.value = {
+        ...state.value,
+        validateUser: null,
+      };
+    },
+  },
+
+  // Add an extra reducer to handle async state updates for validateUser
+  extraReducers: (builder) => {
+    builder
+      .addCase(validateUserAsync.fulfilled, (state, action) => {
+        state.value.validateUser = action.payload;
+      })
+      .addCase(validateUserAsync.rejected, (state, action) => {
+        state.value.validateUser = null; // Or handle error in state as needed
+      });
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { leaves, holidays, salary, home } = counterSlice.actions;
-
+// Export actions
+export const { leaves, holidays, salary, home, logout } = counterSlice.actions;
 export default counterSlice.reducer;

@@ -12,6 +12,9 @@ import approveLeave from './src/approveLeaves.js';
 import getleaves from './src/getleaves.js';
 import getLeavesbyId from './src/getLeavesbyId.js';
 import approveUser from './src/approveUser.js';
+import decodeToken from './src/decodeToken.js';
+import editLeaves from './src/editleaves.js';
+import getLeavesByUser from './src/getleavesbuUser.js';
 
 const app = express();
 const router = express.Router();
@@ -32,10 +35,14 @@ app.post('/login', jsonParser, (req, res) => loginValidation(req, res));
 
 app.post('/approve/:id', jsonParser, (req, res) => approveUser(req, res));
 
+app.post('/leaves/add', jsonParser, (req, res) => decodeToken(req, res));
 app.get('/leaves/:id', jsonParser, (req, res) => getLeavesbyId(req, res));
 app.post('/leaves/:id', jsonParser, (req, res) => addLeaves(req, res));
-app.put('/leaves/:id', jsonParser, (req, res) => approveLeave(req, res));
-app.get('/leaves', (req, res) => getleaves(req, res));
+app.put('/leaves/approve/:id', jsonParser, (req, res) =>
+  approveLeave(req, res)
+);
+app.put('/leaves/edit/:id', jsonParser, (req, res) => editLeaves(req, res));
+app.get('/leaves/user/:id', (req, res) => getLeavesByUser(req, res));
 
 mongoose
   .connect(MONGODB_URI)

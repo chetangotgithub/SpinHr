@@ -34,7 +34,7 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error);
-        <Alert message={`Error ocurred ${error.message}`} />;
+        alert(`failes password does not match`);
       });
 
     setuserDetails({ username: '', password: '', retype: '', email: '' });

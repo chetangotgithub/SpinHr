@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Navbar from './Navbar';
-import LeavesPage from './leavesPage';
+import LeavesPage from './LeavesPage';
 import SalaryPage from './SalaryPage';
 import HolidaysPage from './HolidaysPage';
 import '../styles/dashboard.css';

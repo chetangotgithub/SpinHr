@@ -6,12 +6,15 @@ import { BrowserRouter as Router, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Alert from './Alert';
 import '../styles/signup.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { validateUserAsync } from '../Redux/NavbarReducer';
 
 const Login = () => {
   const [credentials, setcredentials] = useState({
     username: '',
     password: '',
   });
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
@@ -25,6 +28,7 @@ const Login = () => {
     if (response.data.status == 'failure') {
       alert('Invalid Credentials');
     } else {
+      dispatch(validateUserAsync(response.data));
       navigate('/dashboard');
 
       setcredentials({
