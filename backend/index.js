@@ -15,6 +15,9 @@ import approveUser from './src/approveUser.js';
 import decodeToken from './src/decodeToken.js';
 import editLeaves from './src/editleaves.js';
 import getLeavesByUser from './src/getleavesbuUser.js';
+import getattandance from './src/getattandance.js';
+import addAttandance from './src/addAttandance.js';
+import getattandancebyuser from './src/getattandancebyuser.js';
 
 const app = express();
 const router = express.Router();
@@ -43,6 +46,11 @@ app.put('/leaves/approve/:id', jsonParser, (req, res) =>
 );
 app.put('/leaves/edit/:id', jsonParser, (req, res) => editLeaves(req, res));
 app.get('/leaves/user/:id', (req, res) => getLeavesByUser(req, res));
+app.get('/attandance', (req, res) => getattandance(req, res));
+app.post('/attandance', jsonParser, (req, res) => addAttandance(req, res));
+app.get('/attandance/:id', jsonParser, (req, res) =>
+  getattandancebyuser(req, res)
+);
 
 mongoose
   .connect(MONGODB_URI)

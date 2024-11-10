@@ -7,6 +7,7 @@ import '../styles/dashboard.css';
 
 import { useSelector } from 'react-redux';
 import HomePage from './homePage';
+import AttendanceTable from './AttendancePage';
 const Dashboard = () => {
   const currentState = useSelector((state) => state.navbar.value);
 
@@ -20,6 +21,7 @@ const Dashboard = () => {
       {currentState.leaves ? <LeavesPage /> : null}
       {currentState.holidays ? <HolidaysPage /> : null}
       {currentState.salary ? <SalaryPage /> : null}
+      {currentState.attandance ? <AttendanceTable /> : null}
     </div>
   );
 };

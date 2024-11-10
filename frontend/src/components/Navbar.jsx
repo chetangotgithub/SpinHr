@@ -1,7 +1,14 @@
 import React from 'react';
 import SpinHRLogo from '../assets/spinhrlogin.png';
 import { useDispatch } from 'react-redux';
-import { holidays, home, leaves, salary, logout } from '../Redux/NavbarReducer';
+import {
+  holidays,
+  home,
+  leaves,
+  salary,
+  logout,
+  attandance,
+} from '../Redux/NavbarReducer';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -27,6 +34,7 @@ const Navbar = () => {
         <button onClick={() => dispatch(leaves())}>leaves</button>
         <button onClick={() => dispatch(holidays())}>holidays</button>
         <button onClick={() => dispatch(salary())}>Salary</button>
+        <button onClick={() => dispatch(attandance())}>Attendance</button>
         <button
           onClick={() => {
             dispatch(logout());

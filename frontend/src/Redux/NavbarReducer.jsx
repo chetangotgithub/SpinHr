@@ -7,6 +7,7 @@ const initialState = {
     leaves: false,
     holidays: false,
     salary: false,
+    attandance: false,
     validateUser: null,
   },
 };
@@ -40,6 +41,7 @@ export const counterSlice = createSlice({
         leaves: true,
         holidays: false,
         salary: false,
+        attandance: false,
       };
     },
     holidays: (state) => {
@@ -49,6 +51,7 @@ export const counterSlice = createSlice({
         leaves: false,
         holidays: true,
         salary: false,
+        attandance: false,
       };
     },
     salary: (state) => {
@@ -58,6 +61,7 @@ export const counterSlice = createSlice({
         leaves: false,
         holidays: false,
         salary: true,
+        attandance: false,
       };
     },
     home: (state) => {
@@ -67,6 +71,17 @@ export const counterSlice = createSlice({
         leaves: false,
         holidays: false,
         salary: false,
+        attandance: false,
+      };
+    },
+    attandance: (state) => {
+      state.value = {
+        ...state.value,
+        home: false,
+        leaves: false,
+        holidays: false,
+        salary: false,
+        attandance: true,
       };
     },
     logout: (state) => {
@@ -90,5 +105,6 @@ export const counterSlice = createSlice({
 });
 
 // Export actions
-export const { leaves, holidays, salary, home, logout } = counterSlice.actions;
+export const { leaves, holidays, salary, home, logout, attandance } =
+  counterSlice.actions;
 export default counterSlice.reducer;
