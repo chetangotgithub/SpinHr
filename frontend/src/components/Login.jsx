@@ -28,6 +28,7 @@ const Login = () => {
     if (response.data.status == 'failure') {
       alert('Invalid Credentials');
     } else {
+      alert('Login Successful');
       dispatch(validateUserAsync(response.data));
       navigate('/dashboard');
 

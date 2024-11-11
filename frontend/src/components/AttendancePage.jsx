@@ -43,6 +43,7 @@ const AttendanceTable = () => {
   useEffect(() => {
     const fetchAttendance = async () => {
       try {
+        console.log(userid);
         const response = await axios.get(
           `http://localhost:3000/attandance/${userid}`
         );
@@ -69,7 +70,7 @@ const AttendanceTable = () => {
     };
 
     fetchAttendance();
-  }, []); // Add `userid` as a dependency if it may change
+  }, [attendance]); // Add `userid` as a dependency if it may change
 
   return (
     <div
